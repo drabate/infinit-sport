@@ -1,24 +1,34 @@
-import logo from "./logo.svg";
-import "./App.scss";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import ListPage from "./pages/ListPage";
+import DashboardPage from "./pages/DashboardPage";
+import DetailPage from "./pages/DetailPage";
+import { FootballTeamProvider } from "./context/FootballTeamContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="bg-red-500">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="bg-red-500">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FootballTeamProvider>
+      <Router>
+        <div className="min-h-screen bg-gray-100">
+          <nav className="p-4 bg-blue-600 text-white">
+            <ul className="flex space-x-4">
+              <li>
+                <Link to="/list">List</Link>
+              </li>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+            </ul>
+          </nav>
+          <Routes>
+            <Route path="/list" element={<ListPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/details/:id" element={<DetailPage />} />
+            <Route path="/" exact element={<ListPage />} />
+          </Routes>
+        </div>
+      </Router>
+    </FootballTeamProvider>
   );
 }
 
