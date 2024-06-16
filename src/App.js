@@ -10,8 +10,8 @@ function App() {
     <FootballTeamProvider>
       <Router>
         <div className="min-h-screen bg-gray-100">
-          <nav className="p-4 bg-blue-600 text-white">
-            <ul className="flex space-x-4">
+          <nav className="p-4 bg-blue-600 text-white flex justify-center">
+            <ul className="flex space-x-10">
               <li>
                 <Link to="/list">List</Link>
               </li>

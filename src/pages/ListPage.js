@@ -3,7 +3,7 @@ import FootballTeamContext from "../context/FootballTeamContext";
 import { Link } from "react-router-dom";
 
 const ListPage = () => {
-  const { teams, hasMorePage, setPage, page, loading } =
+  const { teams, hasMorePage, setPage, page, loading, setSelectedTeam } =
     useContext(FootballTeamContext);
 
   return (
@@ -18,7 +18,11 @@ const ListPage = () => {
           <ul className="">
             {teams.map((team) => (
               <Link to={`/details/${team.id}`} className="text-black">
-                <li key={team.id} className="mb-2 flex justify-center">
+                <li
+                  onClick={() => setSelectedTeam(team)}
+                  key={team.id}
+                  className="mb-2 flex justify-center"
+                >
                   <div className="min-w-60 border-2 border-black px-2 py-1">
                     {team.name}
                   </div>

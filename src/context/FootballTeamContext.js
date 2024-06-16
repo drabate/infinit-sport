@@ -4,6 +4,7 @@ const FootballTeamContext = createContext();
 
 export const FootballTeamProvider = ({ children }) => {
   const [teams, setTeams] = useState([]);
+  const [selectedTeam, setSelectedTeam] = useState({});
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMorePage, setHasMorePage] = useState(true);
@@ -30,7 +31,15 @@ export const FootballTeamProvider = ({ children }) => {
 
   return (
     <FootballTeamContext.Provider
-      value={{ teams, page, setPage, hasMorePage, loading }}
+      value={{
+        teams,
+        selectedTeam,
+        page,
+        setPage,
+        setSelectedTeam,
+        hasMorePage,
+        loading,
+      }}
     >
       {children}
     </FootballTeamContext.Provider>
