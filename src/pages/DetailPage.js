@@ -20,7 +20,15 @@ const DetailPage = () => {
 
             <p className="capitalize">{selectedTeam.type}</p>
             <p>
-              <strong>Last Played At:</strong> {selectedTeam.last_played_at}
+              <strong>Last Played At:</strong>{" "}
+              {new Date(selectedTeam.last_played_at).toLocaleDateString(
+                "en-GB",
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }
+              )}
             </p>
           </div>
         )
